@@ -7,26 +7,33 @@ public partial class Dargon : CharacterBody2D
 	public const float JumpVelocity = -400.0f;
     public bool FacingRight = true;
 
+    [Export]
+    public float FireRechargeRate = 0.01f;  // how fast fire recharges
+    [Export]
+    public float FireDrainRate = 0.01f;  // how fast fire drains
+
     private bool _isAttacking = false;
-    private bool _readyToAttack = true;
+    private bool _burnOut = false;       // used too much fire, must cooldown
+    private float _amountOfFuel = 1.0f;  // 0-1% how much fire left
 
     // Nodes
     public AnimatedSprite2D AnimPlayer;
     public Area2D AttackArea;
-    public Timer AttackTimer;
-    public Timer AttackCooldown;
     public GpuParticles2D AttackParticles;
+    public ProgressBar FireAmmoBar;
+    public Timer HurtboxAfterTimer; // how long after the player stops attacking until the hurtbox turns off
+    public AnimationPlayer ColorAnimator;
 
     public override void _Ready()
     {
         base._Ready();
         AnimPlayer = GetNode<AnimatedSprite2D>("%AnimatedSprite2D");
         AttackArea = GetNode<Area2D>("%AttackArea");
-        AttackTimer = GetNode<Timer>("%AttackTimer");
         AttackParticles = GetNode<GpuParticles2D>("%AttackParticles");
-        AttackCooldown = GetNode<Timer>("%AttackCooldown");
-        AttackTimer.Timeout += () => StopAttack();
-        AttackCooldown.Timeout += () => { _readyToAttack = true; };
+        FireAmmoBar = GetNode<ProgressBar>("%FireAmmoBar");
+        HurtboxAfterTimer = GetNode<Timer>("%HurtboxAfterTimer");
+        HurtboxAfterTimer.Timeout += () => { AttackArea.Monitoring = false; };
+        ColorAnimator = GetNode<AnimationPlayer>("%ColorAnimator");
     }
 
 	public override void _PhysicsProcess(double delta)
@@ -87,29 +94,45 @@ public partial class Dargon : CharacterBody2D
 		Velocity = velocity;
 
         // Attack related stuff ------------------------------------------------
-        if (Input.IsActionPressed("attack") && !_isAttacking && _readyToAttack)
+        // Attacking, not burnt out
+        if (Input.IsActionPressed("attack") && !_burnOut)
         {
-            Attack(delta);
+            _amountOfFuel = Math.Clamp(_amountOfFuel - FireDrainRate, 0, 1);
+            if (_amountOfFuel <= 0)
+            {
+                _burnOut = true;
+                ColorAnimator.Play("burnout");
+            }
+            else
+            {
+                _isAttacking = true;
+                AnimPlayer.Play("attack");
+                AttackParticles.Emitting = true;
+            }
         }
-    }
+        // Not Attacking (recharge)
+        else
+        {
+            _isAttacking = false;
+            AttackParticles.Emitting = false;
+            _amountOfFuel = Math.Clamp(_amountOfFuel + FireRechargeRate, 0, 1);
+            if(_amountOfFuel == 1)
+            {
+                _burnOut = false;
+                ColorAnimator.Play("RESET");
+            }
+        }
+        // Refresh Ammo bar graphic
+        if (_amountOfFuel <= 1)
+        {
+            FireAmmoBar.Visible = true;
+            FireAmmoBar.Value = _amountOfFuel;
+        }
+        else
+        {
+            FireAmmoBar.Visible = false;
+        }
 
-    private void Attack(double delta)
-    {
-        GD.Print("ATTAK");
-        _isAttacking = true;
-        _readyToAttack = false;
-        AttackTimer.Start();
-        AttackParticles.Emitting = true;
-        AttackArea.Monitoring = true;
-        AnimPlayer.Play("attack");
-    }
-
-    private void StopAttack()
-    {
-        AttackCooldown.Start();
-        _isAttacking = false;
-        AttackParticles.Emitting = false;
-        AttackArea.Monitoring = false;
     }
 
     // Flip the fire effects horizontally based on FacingRight

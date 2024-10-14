@@ -1,9 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://bwg6cao6r80e3"]
+[gd_scene load_steps=32 format=3 uid="uid://bwg6cao6r80e3"]
 
 [ext_resource type="Script" path="res://scenes/Dargon.cs" id="1_p3hlw"]
+[ext_resource type="Shader" uid="uid://du5priqw440ov" path="res://scenes/shaders/HitFlash.tres" id="2_3sjkm"]
 [ext_resource type="Texture2D" uid="uid://c8c1edqa6k63c" path="res://assets/graphics/dragon pack/spritesheet.png" id="2_rpkpx"]
 [ext_resource type="Texture2D" uid="uid://2gmxpqsad7hj" path="res://assets/graphics/fire/FB00_nyknck/FB001.png" id="3_ids7p"]
 [ext_resource type="Theme" uid="uid://nd30clup4hqu" path="res://new_theme.tres" id="4_eeo4k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qeb1q"]
+shader = ExtResource("2_3sjkm")
+shader_parameter/Enabled = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3wxx"]
 atlas = ExtResource("2_rpkpx")
@@ -172,16 +178,55 @@ scale_max = 0.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocqc1"]
 size = Vector2(125, 67)
 
+[sub_resource type="Animation" id="Animation_xedxs"]
+resource_name = "burnout"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3kc64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi5nm"]
+_data = {
+"RESET": SubResource("Animation_3kc64"),
+"burnout": SubResource("Animation_xedxs")
+}
+
 [node name="Dargon" type="CharacterBody2D"]
 script = ExtResource("1_p3hlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_qeb1q")
 sprite_frames = SubResource("SpriteFrames_14xf8")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.0280798
+frame_progress = 0.919456
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -190,20 +235,16 @@ shape = SubResource("CapsuleShape2D_bqchw")
 
 [node name="AttackGroup" type="Node2D" parent="."]
 
+[node name="HurtboxAfterTimer" type="Timer" parent="AttackGroup"]
+unique_name_in_owner = true
+editor_description = "how long the hurtbox stays active after player stops attacking"
+
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackGroup"]
 unique_name_in_owner = true
 emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_trmbx")
 texture = ExtResource("3_ids7p")
-
-[node name="AttackTimer" type="Timer" parent="AttackGroup"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="AttackCooldown" type="Timer" parent="AttackGroup"]
-unique_name_in_owner = true
-one_shot = true
 
 [node name="AttackArea" type="Area2D" parent="AttackGroup"]
 unique_name_in_owner = true
@@ -219,12 +260,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="AttackGroup/UI"]
+[node name="FireAmmoBar" type="ProgressBar" parent="AttackGroup/UI"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -50.0
 offset_top = -50.0
 offset_right = 50.0
 offset_bottom = -35.0
 theme = ExtResource("4_eeo4k")
-value = 50.0
+max_value = 1.0
+value = 1.0
 show_percentage = false
+
+[node name="ColorAnimator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_pi5nm")
+}

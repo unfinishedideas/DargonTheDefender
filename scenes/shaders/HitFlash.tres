@@ -1,0 +1,74 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://du5priqw440ov"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_7r8s6"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_h6oj3"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_facqj"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_cur0y"]
+parameter_name = "Enabled"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool Enabled;
+uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void fragment() {
+// BooleanParameter:7
+	bool n_out7p0 = Enabled;
+
+
+// ColorParameter:3
+	vec4 n_out3p0 = ColorParameter;
+
+
+// Input:5
+	vec4 n_out5p0 = COLOR;
+
+
+	vec3 n_out6p0;
+// If:6
+	float n_in6p1 = 1.00000;
+	float n_in6p2 = 0.00001;
+	if(abs((n_out7p0 ? 1.0 : 0.0) - n_in6p1) < n_in6p2)
+	{
+		n_out6p0 = vec3(n_out3p0.xyz);
+	}
+	else if((n_out7p0 ? 1.0 : 0.0) < n_in6p1)
+	{
+		n_out6p0 = vec3(n_out5p0.xyz);
+	}
+	else
+	{
+		n_out6p0 = vec3(n_out5p0.xyz);
+	}
+
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-8.33944, 258.303)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1520, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_7r8s6")
+nodes/fragment/3/position = Vector2(420, 440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_h6oj3")
+nodes/fragment/5/position = Vector2(320, 780)
+nodes/fragment/6/node = SubResource("VisualShaderNodeIf_facqj")
+nodes/fragment/6/position = Vector2(1058, 469)
+nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_cur0y")
+nodes/fragment/7/position = Vector2(440, 200)
+nodes/fragment/connections = PackedInt32Array(5, 0, 6, 4, 5, 0, 6, 5, 3, 0, 6, 3, 6, 0, 0, 0, 7, 0, 6, 0)
