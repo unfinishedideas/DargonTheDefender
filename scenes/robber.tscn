@@ -124,6 +124,9 @@ tracks/4/keys = {
 "values": [Vector2(63.2609, 224.739)]
 }
 
+[sub_resource type="Animation" id="Animation_jedv4"]
+resource_name = "die_left"
+
 [sub_resource type="Animation" id="Animation_mbs6b"]
 resource_name = "idle_left"
 loop_mode = 1
@@ -226,7 +229,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-34, 26), Vector2(-39, -31), Vector2(-78, -49), Vector2(-40, 97), Vector2(64, 91), Vector2(147, 50), Vector2(205, 12), Vector2(63, 32), Vector2(-5, 101)]
+"values": [Vector2(-34, 26), Vector2(-39, -31), Vector2(-78, -49), Vector2(-40, 97), Vector2(64, 91), Vector2(147, 50), Vector2(205, 12), Vector2(63, 32), Vector2(-20, 48)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -318,9 +321,6 @@ tracks/4/keys = {
 "values": [Vector2(112, -57), Vector2(94, -51), Vector2(90, -66), Vector2(94, -51), Vector2(90, -66), Vector2(112, -57)]
 }
 
-[sub_resource type="Animation" id="Animation_jedv4"]
-resource_name = "die_left"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmf76"]
 _data = {
 "RESET": SubResource("Animation_ijkvs"),
@@ -367,33 +367,33 @@ metadata/_edit_lock_ = true
 
 [node name="BackArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(88.8364, -95.8876)
-rotation = -2.39415
-scale = Vector2(0.999943, 0.999943)
+position = Vector2(88.8175, -95.7066)
+rotation = -2.38808
+scale = Vector2(0.99996, 0.99996)
 texture = ExtResource("7_rfjys")
 metadata/_edit_lock_ = true
 
 [node name="BackArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-38.7561, 30.3078)
-rotation = -0.826395
-scale = Vector2(0.999965, 0.999965)
+position = Vector2(-38.719, 28.6079)
+rotation = -0.757703
+scale = Vector2(0.999972, 0.999972)
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
 [node name="BackArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-86.5074, 39.3433)
-rotation = -0.826395
-scale = Vector2(0.999965, 0.999965)
+position = Vector2(-86.9782, 34.3446)
+rotation = -0.757703
+scale = Vector2(0.999972, 0.999972)
 texture = ExtResource("9_mvt4c")
 metadata/_edit_lock_ = true
 
 [node name="BackLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(78.2348, 3.25415)
-rotation = -1.78945
-scale = Vector2(0.999976, 0.999976)
+position = Vector2(78.1834, 3.58799)
+rotation = -1.77442
+scale = Vector2(0.999975, 0.999975)
 texture = ExtResource("13_i6whr")
 metadata/_edit_lock_ = true
 
@@ -401,7 +401,7 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-20.2527, 77.6747)
 rotation = 0.284062
-scale = Vector2(0.999974, 0.999974)
+scale = Vector2(0.999975, 0.999975)
 texture = ExtResource("14_td1yf")
 metadata/_edit_lock_ = true
 
@@ -409,15 +409,15 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-59.3065, 132.943)
 rotation = 0.284062
-scale = Vector2(0.999974, 0.999974)
+scale = Vector2(0.999975, 0.999975)
 texture = ExtResource("15_c3ifu")
 metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(51.4116, -151.688)
-rotation = 0.403472
-scale = Vector2(0.999969, 0.999969)
+position = Vector2(51.2151, -151.75)
+rotation = 0.396855
+scale = Vector2(0.999979, 0.999979)
 texture = ExtResource("1_8pqfg")
 metadata/_edit_lock_ = true
 
@@ -429,49 +429,49 @@ metadata/_edit_lock_ = true
 
 [node name="FrontLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(29.127, 18.0261)
-rotation = 0.827884
-scale = Vector2(0.999971, 0.999971)
+position = Vector2(29.5721, 18.6149)
+rotation = 0.784759
+scale = Vector2(0.999974, 0.999974)
 texture = ExtResource("10_r56sq")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-17.1544, 76.3304)
+position = Vector2(-17.1544, 76.33)
 rotation = 0.258191
-scale = Vector2(0.99999, 0.99999)
+scale = Vector2(0.999983, 0.999983)
 texture = ExtResource("11_qr7sc")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-54.5107, 131.624)
+position = Vector2(-54.5104, 131.624)
 rotation = 0.258191
-scale = Vector2(0.99999, 0.99999)
+scale = Vector2(0.999983, 0.999983)
 texture = ExtResource("12_34iph")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(37.4107, -103.264)
-rotation = 1.39801
-scale = Vector2(0.999967, 0.999967)
+position = Vector2(37.6486, -102.382)
+rotation = 1.34103
+scale = Vector2(0.999978, 0.999978)
 texture = ExtResource("3_tndru")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-1.26197, 57.0305)
+position = Vector2(-1.26198, 57.0306)
 rotation = -1.61994
-scale = Vector2(0.999967, 0.999967)
+scale = Vector2(0.999972, 0.999972)
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-3.7507, 108.213)
+position = Vector2(-3.75071, 108.213)
 rotation = -1.61994
-scale = Vector2(0.999967, 0.999967)
+scale = Vector2(0.999972, 0.999972)
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 
