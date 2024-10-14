@@ -16,6 +16,14 @@ RichTextLabel/font_sizes/normal_font_size = 45
 [node name="main" type="Node2D"]
 script = ExtResource("1_otfyy")
 
+[node name="GameLogic" type="Node" parent="."]
+
+[node name="LevelTimer" type="Timer" parent="GameLogic"]
+unique_name_in_owner = true
+wait_time = 300.0
+one_shot = true
+autostart = true
+
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -30,7 +38,7 @@ theme = SubResource("Theme_la2q5")
 text = "TreasureCounterNotSet"
 autowrap_mode = 0
 
-[node name="TimeLeft" type="RichTextLabel" parent="UI"]
+[node name="LevelTimerDisplay" type="RichTextLabel" parent="UI"]
 unique_name_in_owner = true
 texture_filter = 1
 offset_left = 1276.0
