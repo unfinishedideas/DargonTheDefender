@@ -233,7 +233,6 @@ particle_flag_disable_z = true
 emission_shape_offset = Vector3(20, 5, 0)
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
-direction = Vector3(0, 0, 0)
 spread = 20.0
 initial_velocity_min = 100.0
 initial_velocity_max = 150.0
@@ -247,6 +246,7 @@ scale_max = 0.5
 size = Vector2(125, 67)
 
 [node name="Dargon" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_p3hlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -296,10 +296,12 @@ one_shot = true
 
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackGroup"]
 unique_name_in_owner = true
-emitting = false
-amount = 100
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_trmbx")
 texture = ExtResource("3_ids7p")
+speed_scale = 2.0
+randomness = 0.35
+fixed_fps = 60
 
 [node name="AttackArea" type="Area2D" parent="AttackGroup"]
 unique_name_in_owner = true

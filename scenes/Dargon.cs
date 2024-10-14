@@ -6,7 +6,9 @@ public partial class Dargon : CharacterBody2D
     [Export]
     public float Speed = 300.0f;
     [Export]
-    public float BurnoutSpeed = 150.0f;
+    public float BurninatingSpeed = 200.0f; // movement speed while attacking
+    [Export]
+    public float BurnoutSpeed = 125.0f;     // movement speed in burnout
     [Export]
     public float FireRechargeRate = 0.01f;  // how fast fire recharges
     [Export]
@@ -58,8 +60,21 @@ public partial class Dargon : CharacterBody2D
             {
                 AnimPlayer.Play("walk");
             }
-            velocity.X = _burnOut ? direction.X * BurnoutSpeed : direction.X * Speed;
-            velocity.Y = _burnOut ? direction.Y * BurnoutSpeed : direction.Y * Speed;
+            float currentSpeed = 0f;
+            if (_burnOut)
+            {
+                currentSpeed = BurnoutSpeed;
+            }
+            else if (_isAttacking)
+            {
+                currentSpeed = BurninatingSpeed;
+            }
+            else
+            {
+                currentSpeed = Speed;
+            }
+            velocity.X = _burnOut ? direction.X * BurnoutSpeed : direction.X * currentSpeed;
+            velocity.Y = _burnOut ? direction.Y * BurnoutSpeed : direction.Y * currentSpeed;
         }
         else
         {

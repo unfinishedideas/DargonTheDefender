@@ -9,7 +9,6 @@
 script = ExtResource("1_24x70")
 
 [node name="Dargon" parent="." instance=ExtResource("2_27ifm")]
-scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Dargon"]
 zoom = Vector2(2.5, 2.5)
@@ -19,4 +18,3 @@ position = Vector2(160, -15)
 
 [node name="Robber" parent="." instance=ExtResource("4_g4x5o")]
 position = Vector2(74, 24)
-scale = Vector2(0.1, 0.1)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://cx0mmxcdoawdw"]
+[gd_scene load_steps=36 format=3 uid="uid://cx0mmxcdoawdw"]
 
 [ext_resource type="Texture2D" uid="uid://g0s4unprdfh4" path="res://assets/graphics/robber/robber_0000s_0000_head.png" id="1_8pqfg"]
+[ext_resource type="Script" path="res://scenes/Robber.cs" id="1_f6ves"]
 [ext_resource type="Texture2D" uid="uid://q32nawskqsuw" path="res://assets/graphics/robber/robber_0000s_0001_main-bod.png" id="2_j62a8"]
 [ext_resource type="Texture2D" uid="uid://dlx3bg7wx8edy" path="res://assets/graphics/robber/robber_0000s_0001s_0003_front-arm---top.png" id="3_tndru"]
 [ext_resource type="Texture2D" uid="uid://bfknqp7hrq26j" path="res://assets/graphics/robber/robber_0000s_0001s_0002_front-arm---fore.png" id="4_7i6l1"]
@@ -60,70 +61,6 @@ modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_mb3sa")
 modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_v1cvw")
 modifications/4 = SubResource("SkeletonModification2DLookAt_k6mrn")
 
-[sub_resource type="Animation" id="Animation_mbs6b"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontArm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(33, 80), Vector2(26, 79), Vector2(33, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackArm:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(73, 83), Vector2(67, 83), Vector2(73, 83)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SkeletonAndPartsContainer/IK_Target_Head:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(112, -57), Vector2(111, -62), Vector2(112, -57)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontLeg:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(51, 227)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackLeg:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(63.2609, 224.739)]
-}
-
 [sub_resource type="Animation" id="Animation_ijkvs"]
 length = 0.001
 tracks/0/type = "value"
@@ -161,6 +98,70 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(112, -57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontLeg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 227)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackLeg:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(63.2609, 224.739)]
+}
+
+[sub_resource type="Animation" id="Animation_mbs6b"]
+resource_name = "idle_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(33, 80), Vector2(26, 79), Vector2(33, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(73, 83), Vector2(67, 83), Vector2(73, 83)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonAndPartsContainer/IK_Target_Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(112, -57), Vector2(111, -62), Vector2(112, -57)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -237,7 +238,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-23, 7), Vector2(112, 49), Vector2(167, 3), Vector2(32, 76), Vector2(-33, 41), Vector2(-92, 1), Vector2(-107, -36), Vector2(-41, 103), Vector2(156, 68)]
+"values": [Vector2(-23, 7), Vector2(112, 49), Vector2(187, -26), Vector2(133, 65), Vector2(10, 83), Vector2(-92, 1), Vector2(-107, -36), Vector2(-41, 103), Vector2(156, 68)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -252,14 +253,110 @@ tracks/4/keys = {
 "values": [Vector2(112, -57), Vector2(120, -23), Vector2(109, -50), Vector2(109, -28)]
 }
 
+[sub_resource type="Animation" id="Animation_qxfl0"]
+resource_name = "steal_gold_left"
+length = 0.7333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontLeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 227)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(63.2609, 224.739)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonAndPartsContainer/IK_Target_FrontArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 63), Vector2(-46, 39), Vector2(65, 25), Vector2(49, 109), Vector2(-15, 40), Vector2(-74, 43), Vector2(61, 43), Vector2(49, 103), Vector2(4, 90)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonAndPartsContainer/IK_Target_BackArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.666667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(73, 83), Vector2(5, 61), Vector2(-52, 53), Vector2(56, 40), Vector2(56, 113), Vector2(29, 74), Vector2(-37, 57), Vector2(29, 52), Vector2(49, 134)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonAndPartsContainer/IK_Target_Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.433333, 0.6, 0.7333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(112, -57), Vector2(94, -51), Vector2(90, -66), Vector2(94, -51), Vector2(90, -66), Vector2(112, -57)]
+}
+
+[sub_resource type="Animation" id="Animation_jedv4"]
+resource_name = "die_left"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xmf76"]
 _data = {
 "RESET": SubResource("Animation_ijkvs"),
-"idle": SubResource("Animation_mbs6b"),
-"run_left": SubResource("Animation_i7dsi")
+"die_left": SubResource("Animation_jedv4"),
+"idle_left": SubResource("Animation_mbs6b"),
+"run_left": SubResource("Animation_i7dsi"),
+"steal_gold_left": SubResource("Animation_qxfl0")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6i5h"]
+radius = 63.0
+height = 300.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rrtx"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cc61"]
+bg_color = Color(1, 0.46, 0.568, 1)
+
+[sub_resource type="Theme" id="Theme_30bt7"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_3rrtx")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_3cc61")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fm2o"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5aksp"]
+bg_color = Color(0.3634, 0.79, 0.39184, 1)
+
+[sub_resource type="Theme" id="Theme_pkdvr"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_5fm2o")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_5aksp")
+
 [node name="Robber" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_f6ves")
 
 [node name="SkeletonAndPartsContainer" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -268,113 +365,114 @@ metadata/_edit_lock_ = true
 position = Vector2(1, 71)
 metadata/_edit_lock_ = true
 
-[node name="BackLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
-texture_filter = 1
-position = Vector2(53.2438, 22.3025)
-rotation = -0.241019
-scale = Vector2(0.999997, 0.999997)
-texture = ExtResource("13_i6whr")
-metadata/_edit_lock_ = true
-
-[node name="BackLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
-texture_filter = 1
-position = Vector2(37.5286, 57.1656)
-rotation = -1.00545
-scale = Vector2(0.999996, 0.999996)
-texture = ExtResource("14_td1yf")
-metadata/_edit_lock_ = true
-
-[node name="BackLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
-texture_filter = 1
-position = Vector2(79.7844, 110.028)
-rotation = -1.00545
-scale = Vector2(0.999996, 0.999996)
-texture = ExtResource("15_c3ifu")
-metadata/_edit_lock_ = true
-
 [node name="BackArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(40.7012, -75.2272)
-rotation = -0.271282
-scale = Vector2(0.999996, 0.999996)
+position = Vector2(70.9181, -71.4738)
+rotation = -1.3359
+scale = Vector2(0.999851, 0.999851)
 texture = ExtResource("7_rfjys")
 metadata/_edit_lock_ = true
 
 [node name="BackArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-31.1676, 12.1598)
-rotation = -0.00935391
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-33.2853, 14.4777)
+rotation = -0.136255
+scale = Vector2(0.99989, 0.99989)
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
 [node name="BackArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-70.4371, -16.474)
-rotation = -0.00935391
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-75.8584, -8.95343)
+rotation = -0.136255
+scale = Vector2(0.99989, 0.99989)
 texture = ExtResource("9_mvt4c")
+metadata/_edit_lock_ = true
+
+[node name="BackLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
+texture_filter = 1
+position = Vector2(54.4527, 22.4189)
+rotation = -0.29507
+scale = Vector2(1, 1)
+texture = ExtResource("13_i6whr")
+metadata/_edit_lock_ = true
+
+[node name="BackLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
+texture_filter = 1
+position = Vector2(-20.2531, 77.6759)
+rotation = 0.284062
+scale = Vector2(1, 1)
+texture = ExtResource("14_td1yf")
+metadata/_edit_lock_ = true
+
+[node name="BackLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
+texture_filter = 1
+position = Vector2(-59.3079, 132.945)
+rotation = 0.284062
+scale = Vector2(1, 1)
+texture = ExtResource("15_c3ifu")
 metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(36.3258, -152.623)
-rotation = -0.0867384
-scale = Vector2(0.999996, 0.999996)
+position = Vector2(34.8973, -152.249)
+rotation = -0.13416
+scale = Vector2(0.997637, 0.997637)
 texture = ExtResource("1_8pqfg")
 metadata/_edit_lock_ = true
 
 [node name="Torso" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
 position = Vector2(51, -49)
+scale = Vector2(1, 1)
 texture = ExtResource("2_j62a8")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(45.7043, 24.9022)
+position = Vector2(45.7043, 24.9023)
 rotation = -0.275759
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(1, 1)
 texture = ExtResource("10_r56sq")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-17.1545, 76.3308)
+position = Vector2(-17.1545, 76.3309)
 rotation = 0.258191
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(1, 1)
 texture = ExtResource("11_qr7sc")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-54.5111, 131.625)
+position = Vector2(-54.5112, 131.625)
 rotation = 0.258191
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(1, 1)
 texture = ExtResource("12_34iph")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(46.1632, -92.4998)
-rotation = 0.503006
-scale = Vector2(0.999996, 0.999996)
+position = Vector2(50.2094, -91.216)
+rotation = 0.237412
+scale = Vector2(0.999846, 0.999846)
 texture = ExtResource("3_tndru")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-12.7858, 51.3325)
-rotation = -0.736315
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-1.26195, 57.0292)
+rotation = -1.61994
+scale = Vector2(0.999877, 0.999877)
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-53.9318, 81.8773)
-rotation = -0.736315
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-3.75045, 108.207)
+rotation = -1.61994
+scale = Vector2(0.999877, 0.999877)
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 
@@ -407,7 +505,12 @@ metadata/_edit_lock_ = true
 
 [node name="head" type="Bone2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso"]
 position = Vector2(-11, -4)
+rotation = -0.0867383
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, -11, -4)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -4.96974
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso/head"]
@@ -440,6 +543,9 @@ metadata/_edit_lock_ = true
 [node name="FrontArmHand" type="Bone2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso/frontUpperArm/frontLowerArm"]
 position = Vector2(-61, -3)
 rest = Transform2D(1, 0, 0, 1, -61, -3)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso/frontUpperArm/frontLowerArm/FrontArmHand"]
@@ -472,6 +578,9 @@ metadata/_edit_lock_ = true
 [node name="BackArmHand" type="Bone2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso/backUpperArm/BackLowerArm"]
 position = Vector2(-51, -37)
 rest = Transform2D(1, 0, 0, 1, -51, -37)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/torso/backUpperArm/BackLowerArm/BackArmHand"]
@@ -504,6 +613,9 @@ metadata/_edit_lock_ = true
 [node name="FrontFoot" type="Bone2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/FrontUpperLeg/FrontLowerLeg"]
 position = Vector2(3, 101)
 rest = Transform2D(1, 0, 0, 1, 3, 101)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/FrontUpperLeg/FrontLowerLeg/FrontFoot"]
@@ -536,6 +648,9 @@ metadata/_edit_lock_ = true
 [node name="BackFoot" type="Bone2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/BackUpperLeg/BackLowerLeg"]
 position = Vector2(3, 101)
 rest = Transform2D(1, 0, 0, 1, 3, 101)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 metadata/_edit_lock_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="SkeletonAndPartsContainer/Skeleton2D/base/BackUpperLeg/BackLowerLeg/BackFoot"]
@@ -563,3 +678,36 @@ libraries = {
 "": SubResource("AnimationLibrary_xmf76")
 }
 autoplay = "run_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(52, 38)
+shape = SubResource("CapsuleShape2D_c6i5h")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -170.0
+offset_right = 100.0
+offset_bottom = -155.0
+theme = SubResource("Theme_30bt7")
+value = 50.0
+show_percentage = false
+
+[node name="GoldStolenBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = -135.0
+theme = SubResource("Theme_pkdvr")
+value = 50.0
+show_percentage = false
