@@ -7,9 +7,11 @@
 size = Vector2(122, 94.5)
 
 [node name="GoldPile" type="StaticBody2D"]
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_voh1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_nn1vk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

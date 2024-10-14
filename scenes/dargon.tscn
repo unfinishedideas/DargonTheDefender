@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://du5priqw440ov" path="res://scenes/shaders/HitFlash.tres" id="2_3sjkm"]
 [ext_resource type="Texture2D" uid="uid://c8c1edqa6k63c" path="res://assets/graphics/dragon pack/spritesheet.png" id="2_rpkpx"]
 [ext_resource type="Texture2D" uid="uid://2gmxpqsad7hj" path="res://assets/graphics/fire/FB00_nyknck/FB001.png" id="3_ids7p"]
-[ext_resource type="Theme" uid="uid://nd30clup4hqu" path="res://new_theme.tres" id="4_eeo4k"]
+[ext_resource type="Theme" uid="uid://nd30clup4hqu" path="res://themes/new_theme.tres" id="4_eeo4k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qeb1q"]
 shader = ExtResource("2_3sjkm")
@@ -186,23 +186,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_xedxs"]
-resource_name = "burnout_old"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_bb01o"]
 resource_name = "burnout"
 length = 4.0
@@ -218,6 +201,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.85, 0.17, 0.17, 0.960784), Color(0.85, 0.816, 0.17, 0.960784), Color(0.17, 0.85, 0.294667, 0.960784), Color(0.17, 0.442, 0.85, 0.960784), Color(0.748, 0.17, 0.85, 0.960784)]
+}
+
+[sub_resource type="Animation" id="Animation_xedxs"]
+resource_name = "burnout_old"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pi5nm"]
@@ -239,28 +239,30 @@ initial_velocity_max = 150.0
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 0.0100001
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.5
+scale_min = 0.7
+scale_max = 1.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocqc1"]
 size = Vector2(125, 67)
 
 [node name="Dargon" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_p3hlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_qeb1q")
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3.75, 3.75)
 sprite_frames = SubResource("SpriteFrames_14xf8")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.807142
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(2, 0)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3.75, 3.75)
 shape = SubResource("CapsuleShape2D_bqchw")
 
 [node name="ColorAnimator" type="AnimationPlayer" parent="."]
@@ -269,27 +271,27 @@ libraries = {
 "": SubResource("AnimationLibrary_pi5nm")
 }
 
-[node name="UI" type="Control" parent="."]
+[node name="DargonUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="FireAmmoBar" type="ProgressBar" parent="UI"]
+[node name="FireAmmoBar" type="ProgressBar" parent="DargonUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -70.0
-offset_top = -67.0
-offset_right = 30.0
-offset_bottom = -52.0
-scale = Vector2(1.5, 1.5)
+offset_left = -178.0
+offset_top = -179.0
+offset_right = -78.0
+offset_bottom = -164.0
+scale = Vector2(3.75, 3.75)
 theme = ExtResource("4_eeo4k")
 max_value = 1.0
 value = 1.0
 show_percentage = false
 
 [node name="AttackGroup" type="Node2D" parent="."]
-scale = Vector2(1.5, 1)
+scale = Vector2(3.75, 3.75)
 
 [node name="HurtboxAfterTimer" type="Timer" parent="AttackGroup"]
 unique_name_in_owner = true
@@ -313,5 +315,3 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackGroup/AttackArea"]
 position = Vector2(80, 3.5)
 shape = SubResource("RectangleShape2D_ocqc1")
-
-[node name="Node2D" type="Node2D" parent="."]

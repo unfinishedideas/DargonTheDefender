@@ -238,7 +238,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-23, 7), Vector2(112, 49), Vector2(187, -26), Vector2(133, 65), Vector2(10, 83), Vector2(-92, 1), Vector2(-107, -36), Vector2(-41, 103), Vector2(156, 68)]
+"values": [Vector2(-23, 7), Vector2(112, 49), Vector2(187, -26), Vector2(133, 65), Vector2(10, 83), Vector2(-92, 1), Vector2(-107, -36), Vector2(-41, 103), Vector2(88, 104)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -355,7 +355,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_5fm2o")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_5aksp")
 
 [node name="Robber" type="CharacterBody2D"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_f6ves")
 
 [node name="SkeletonAndPartsContainer" type="Node2D" parent="."]
@@ -367,111 +367,111 @@ metadata/_edit_lock_ = true
 
 [node name="BackArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(68.3761, -70.5028)
-rotation = -1.24516
-scale = Vector2(1, 1)
+position = Vector2(88.8364, -95.8876)
+rotation = -2.39415
+scale = Vector2(0.999943, 0.999943)
 texture = ExtResource("7_rfjys")
 metadata/_edit_lock_ = true
 
 [node name="BackArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-38.3176, 25.3466)
-rotation = -0.624887
-scale = Vector2(1, 1)
+position = Vector2(-38.7561, 30.3078)
+rotation = -0.826395
+scale = Vector2(0.999965, 0.999965)
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
 [node name="BackArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-86.9129, 24.6419)
-rotation = -0.624887
-scale = Vector2(1, 1)
+position = Vector2(-86.5074, 39.3433)
+rotation = -0.826395
+scale = Vector2(0.999965, 0.999965)
 texture = ExtResource("9_mvt4c")
 metadata/_edit_lock_ = true
 
 [node name="BackLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(54.4527, 22.4189)
-rotation = -0.29507
-scale = Vector2(1, 1)
+position = Vector2(78.2348, 3.25415)
+rotation = -1.78945
+scale = Vector2(0.999976, 0.999976)
 texture = ExtResource("13_i6whr")
 metadata/_edit_lock_ = true
 
 [node name="BackLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
 texture_filter = 1
-position = Vector2(-20.2531, 77.6759)
+position = Vector2(-20.2527, 77.6747)
 rotation = 0.284062
-scale = Vector2(1, 1)
+scale = Vector2(0.999974, 0.999974)
 texture = ExtResource("14_td1yf")
 metadata/_edit_lock_ = true
 
 [node name="BackLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
 texture_filter = 1
-position = Vector2(-59.3079, 132.945)
+position = Vector2(-59.3065, 132.943)
 rotation = 0.284062
-scale = Vector2(1, 1)
+scale = Vector2(0.999974, 0.999974)
 texture = ExtResource("15_c3ifu")
 metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(39, -153)
-scale = Vector2(0.999997, 0.999997)
+position = Vector2(51.4116, -151.688)
+rotation = 0.403472
+scale = Vector2(0.999969, 0.999969)
 texture = ExtResource("1_8pqfg")
 metadata/_edit_lock_ = true
 
 [node name="Torso" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
 position = Vector2(51, -49)
-scale = Vector2(1, 1)
 texture = ExtResource("2_j62a8")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(45.7043, 24.9023)
-rotation = -0.275759
-scale = Vector2(1, 1)
+position = Vector2(29.127, 18.0261)
+rotation = 0.827884
+scale = Vector2(0.999971, 0.999971)
 texture = ExtResource("10_r56sq")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-17.1545, 76.3309)
+position = Vector2(-17.1544, 76.3304)
 rotation = 0.258191
-scale = Vector2(1, 1)
+scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("11_qr7sc")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-54.5112, 131.625)
+position = Vector2(-54.5107, 131.624)
 rotation = 0.258191
-scale = Vector2(1, 1)
+scale = Vector2(0.99999, 0.99999)
 texture = ExtResource("12_34iph")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(52.9356, -90.9689)
-rotation = 0.0664338
-scale = Vector2(1, 1)
+position = Vector2(37.4107, -103.264)
+rotation = 1.39801
+scale = Vector2(0.999967, 0.999967)
 texture = ExtResource("3_tndru")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-11.6043, 52.6559)
-rotation = -0.854392
-scale = Vector2(1, 1)
+position = Vector2(-1.26197, 57.0305)
+rotation = -1.61994
+scale = Vector2(0.999967, 0.999967)
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-48.8657, 87.8353)
-rotation = -0.854392
-scale = Vector2(1, 1)
+position = Vector2(-3.7507, 108.213)
+rotation = -1.61994
+scale = Vector2(0.999967, 0.999967)
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 
@@ -683,13 +683,13 @@ visible = false
 position = Vector2(52, 38)
 shape = SubResource("CapsuleShape2D_c6i5h")
 
-[node name="UI" type="Control" parent="."]
+[node name="RobberUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
+[node name="HealthBar" type="ProgressBar" parent="RobberUI"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -701,7 +701,7 @@ theme = SubResource("Theme_30bt7")
 value = 50.0
 show_percentage = false
 
-[node name="TreasureStolenBar" type="ProgressBar" parent="UI"]
+[node name="TreasureStolenBar" type="ProgressBar" parent="RobberUI"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
