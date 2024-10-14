@@ -3,15 +3,17 @@ using System;
 
 public partial class Dargon : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
-    public bool FacingRight = true;
-
+    [Export]
+	public float Speed = 300.0f;
+    [Export]
+    public float BurnoutSpeed = 150.0f;
     [Export]
     public float FireRechargeRate = 0.01f;  // how fast fire recharges
     [Export]
-    public float FireDrainRate = 0.01f;  // how fast fire drains
+    public float FireDrainRate = 0.01f;     // how fast fire drains
 
+
+    private bool _facingRight = true;
     private bool _isAttacking = false;
     private bool _burnOut = false;       // used too much fire, must cooldown
     private float _amountOfFuel = 1.0f;  // 0-1% how much fire left
@@ -39,6 +41,7 @@ public partial class Dargon : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
         InputCheck(delta);
+        UpdateUI(delta);
 		MoveAndSlide();
 	}
 
@@ -55,8 +58,8 @@ public partial class Dargon : CharacterBody2D
             {
                 AnimPlayer.Play("walk");
             }
-			velocity.X = direction.X * Speed;
-            velocity.Y = direction.Y * Speed;
+            velocity.X = _burnOut ? direction.X * BurnoutSpeed : direction.X * Speed;
+            velocity.Y = _burnOut ? direction.Y * BurnoutSpeed : direction.Y * Speed;
 		}
 		else
 		{
@@ -69,17 +72,17 @@ public partial class Dargon : CharacterBody2D
 		}
 
         // Check facing and flip sprite and attack area location
-        FacingRight = velocity.X switch 
+        _facingRight = velocity.X switch 
         {
             > 0 => true,
             < 0 => false,
-            0   => FacingRight,
-            _   => FacingRight,
+            0   => _facingRight,
+            _   => _facingRight,
         };
-        AnimPlayer.FlipH = !FacingRight;
+        AnimPlayer.FlipH = !_facingRight;
 
-        // Flip things based on FacingRight
-        switch(FacingRight)
+        // Flip things based on _facingRight
+        switch(_facingRight)
         {
             case true:
                 AttackArea.Scale = new Vector2(1, AttackArea.Scale.Y);
@@ -90,9 +93,12 @@ public partial class Dargon : CharacterBody2D
                 FlipGPUParticles();
                 break;
         }
-
 		Velocity = velocity;
+        AttackInputCheck(delta);
+    }
 
+    private void AttackInputCheck(double delta)
+    {
         // Attack related stuff ------------------------------------------------
         // Attacking, not burnt out
         if (Input.IsActionPressed("attack") && !_burnOut)
@@ -122,8 +128,12 @@ public partial class Dargon : CharacterBody2D
                 ColorAnimator.Play("RESET");
             }
         }
+    }
+
+    private void UpdateUI(double delta)
+    {
         // Refresh Ammo bar graphic
-        if (_amountOfFuel <= 1)
+        if (_amountOfFuel < 1)
         {
             FireAmmoBar.Visible = true;
             FireAmmoBar.Value = _amountOfFuel;
@@ -132,19 +142,18 @@ public partial class Dargon : CharacterBody2D
         {
             FireAmmoBar.Visible = false;
         }
-
     }
 
-    // Flip the fire effects horizontally based on FacingRight
+    // Flip the fire effects horizontally based on _facingRight
     private void FlipGPUParticles()
     {
         ParticleProcessMaterial partyMaterial = (ParticleProcessMaterial)AttackParticles.ProcessMaterial;
 
         Vector3 newEmissionShapeOffset = partyMaterial.EmissionShapeOffset; 
-        newEmissionShapeOffset.X = FacingRight ? 20 : -20;
+        newEmissionShapeOffset.X = _facingRight ? 20 : -20;
 
         Vector3 newEmissionDirection = partyMaterial.Direction;
-        newEmissionDirection.X = FacingRight ? 1 : -1;
+        newEmissionDirection.X = _facingRight ? 1 : -1;
 
         partyMaterial.EmissionShapeOffset = newEmissionShapeOffset;
         partyMaterial.Direction = newEmissionDirection;
