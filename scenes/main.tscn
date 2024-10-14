@@ -1,16 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://tsxglfoxa68w"]
+[gd_scene load_steps=5 format=3 uid="uid://tsxglfoxa68w"]
 
 [ext_resource type="Script" path="res://scenes/Main.cs" id="1_24x70"]
 [ext_resource type="PackedScene" uid="uid://bwg6cao6r80e3" path="res://scenes/dargon.tscn" id="2_27ifm"]
 [ext_resource type="PackedScene" uid="uid://dpb5xkiosx2hi" path="res://scenes/gold_pile.tscn" id="3_2rgmi"]
+[ext_resource type="PackedScene" uid="uid://cx0mmxcdoawdw" path="res://scenes/robber.tscn" id="4_g4x5o"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_24x70")
 
 [node name="Dargon" parent="." instance=ExtResource("2_27ifm")]
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Dargon"]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.5, 2.5)
 
 [node name="GoldPile" parent="." instance=ExtResource("3_2rgmi")]
 position = Vector2(160, -15)
+
+[node name="Robber" parent="." instance=ExtResource("4_g4x5o")]
+position = Vector2(74, 24)
+scale = Vector2(0.1, 0.1)

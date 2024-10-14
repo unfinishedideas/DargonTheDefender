@@ -12,7 +12,6 @@ public partial class Dargon : CharacterBody2D
     [Export]
     public float FireDrainRate = 0.01f;     // how fast fire drains
 
-
     private bool _facingRight = true;
     private bool _isAttacking = false;
     private bool _burnOut = false;       // used too much fire, must cooldown
@@ -85,9 +84,9 @@ public partial class Dargon : CharacterBody2D
         _facingRight = velocityX switch 
         {
             > 0 => true,
-                < 0 => false,
-                0   => _facingRight,
-                _   => _facingRight,
+            < 0 => false,
+            0   => _facingRight,
+            _   => _facingRight,
         };
         AnimPlayer.FlipH = !_facingRight;
         switch(_facingRight)
@@ -101,6 +100,23 @@ public partial class Dargon : CharacterBody2D
                 FlipGPUParticles();
                 break;
         }
+    }
+
+    // Flip the fire effects horizontally based on _facingRight ---------------
+    private void FlipGPUParticles()
+    {
+        ParticleProcessMaterial partyMaterial = (ParticleProcessMaterial)AttackParticles.ProcessMaterial;
+
+        Vector3 newEmissionShapeOffset = partyMaterial.EmissionShapeOffset; 
+        newEmissionShapeOffset.X = _facingRight ? 20 : -20;
+
+        Vector3 newEmissionDirection = partyMaterial.Direction;
+        newEmissionDirection.X = _facingRight ? 1 : -1;
+
+        partyMaterial.EmissionShapeOffset = newEmissionShapeOffset;
+        partyMaterial.Direction = newEmissionDirection;
+
+        AttackParticles.ProcessMaterial = partyMaterial;
     }
 
     // Attack related stuff ---------------------------------------------------
@@ -158,22 +174,5 @@ public partial class Dargon : CharacterBody2D
         {
             FireAmmoBar.Visible = false;
         }
-    }
-
-    // Flip the fire effects horizontally based on _facingRight ---------------
-    private void FlipGPUParticles()
-    {
-        ParticleProcessMaterial partyMaterial = (ParticleProcessMaterial)AttackParticles.ProcessMaterial;
-
-        Vector3 newEmissionShapeOffset = partyMaterial.EmissionShapeOffset; 
-        newEmissionShapeOffset.X = _facingRight ? 20 : -20;
-
-        Vector3 newEmissionDirection = partyMaterial.Direction;
-        newEmissionDirection.X = _facingRight ? 1 : -1;
-
-        partyMaterial.EmissionShapeOffset = newEmissionShapeOffset;
-        partyMaterial.Direction = newEmissionDirection;
-
-        AttackParticles.ProcessMaterial = partyMaterial;
     }
 }
