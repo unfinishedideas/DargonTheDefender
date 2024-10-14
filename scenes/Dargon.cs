@@ -4,7 +4,7 @@ using System;
 public partial class Dargon : CharacterBody2D
 {
     [Export]
-	public float Speed = 300.0f;
+    public float Speed = 300.0f;
     [Export]
     public float BurnoutSpeed = 150.0f;
     [Export]
@@ -38,50 +38,58 @@ public partial class Dargon : CharacterBody2D
         ColorAnimator = GetNode<AnimationPlayer>("%ColorAnimator");
     }
 
-	public override void _PhysicsProcess(double delta)
-	{
+    public override void _PhysicsProcess(double delta)
+    {
         InputCheck(delta);
         UpdateUI(delta);
-		MoveAndSlide();
-	}
+        MoveAndSlide();
+    }
 
+    // Perform input checks for movement and attack, etc ----------------------
     private void InputCheck(double delta)
     {
-        // Movement related stuff ----------------------------------------------
-		Vector2 velocity = Velocity;
+        // Movement related stuff
+        Vector2 velocity = Velocity;
 
-		// Get the input direction and handle the movement/deceleration.
-		Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-		if (direction != Vector2.Zero)
-		{
+        // Get the input direction and handle the movement/deceleration.
+        Vector2 direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+        if (direction != Vector2.Zero)
+        {
             if (!_isAttacking)
             {
                 AnimPlayer.Play("walk");
             }
             velocity.X = _burnOut ? direction.X * BurnoutSpeed : direction.X * Speed;
             velocity.Y = _burnOut ? direction.Y * BurnoutSpeed : direction.Y * Speed;
-		}
-		else
-		{
+        }
+        else
+        {
             if (!_isAttacking)
             {
                 AnimPlayer.Play("idle");
             }
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
-		}
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+            velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+        }
 
+        Velocity = velocity;
+
+        UpdatePlayerFacing(velocity.X);
+        Attacking(delta);
+    }
+
+    // Flip things based on _facingRight --------------------------------------
+    private void UpdatePlayerFacing(float velocityX)
+    {
         // Check facing and flip sprite and attack area location
-        _facingRight = velocity.X switch 
+        _facingRight = velocityX switch 
         {
             > 0 => true,
-            < 0 => false,
-            0   => _facingRight,
-            _   => _facingRight,
+                < 0 => false,
+                0   => _facingRight,
+                _   => _facingRight,
         };
         AnimPlayer.FlipH = !_facingRight;
-
-        // Flip things based on _facingRight
         switch(_facingRight)
         {
             case true:
@@ -93,16 +101,18 @@ public partial class Dargon : CharacterBody2D
                 FlipGPUParticles();
                 break;
         }
-		Velocity = velocity;
-        AttackInputCheck(delta);
     }
 
-    private void AttackInputCheck(double delta)
+    // Attack related stuff ---------------------------------------------------
+    private void Attacking(double delta)
     {
-        // Attack related stuff ------------------------------------------------
         // Attacking, not burnt out
         if (Input.IsActionPressed("attack") && !_burnOut)
         {
+            if (HurtboxAfterTimer.IsStopped() != true)
+            {
+                HurtboxAfterTimer.Stop();
+            }
             _amountOfFuel = Math.Clamp(_amountOfFuel - FireDrainRate, 0, 1);
             if (_amountOfFuel <= 0)
             {
@@ -114,11 +124,16 @@ public partial class Dargon : CharacterBody2D
                 _isAttacking = true;
                 AnimPlayer.Play("attack");
                 AttackParticles.Emitting = true;
+                AttackArea.Monitoring = true;
             }
         }
         // Not Attacking (recharge)
         else
         {
+            if (_isAttacking == true)
+            {
+                HurtboxAfterTimer.Start();
+            }
             _isAttacking = false;
             AttackParticles.Emitting = false;
             _amountOfFuel = Math.Clamp(_amountOfFuel + FireRechargeRate, 0, 1);
@@ -130,6 +145,7 @@ public partial class Dargon : CharacterBody2D
         }
     }
 
+    // Update the Player UI (health, fuel etc) --------------------------------
     private void UpdateUI(double delta)
     {
         // Refresh Ammo bar graphic
@@ -144,7 +160,7 @@ public partial class Dargon : CharacterBody2D
         }
     }
 
-    // Flip the fire effects horizontally based on _facingRight
+    // Flip the fire effects horizontally based on _facingRight ---------------
     private void FlipGPUParticles()
     {
         ParticleProcessMaterial partyMaterial = (ParticleProcessMaterial)AttackParticles.ProcessMaterial;

@@ -292,6 +292,7 @@ show_percentage = false
 [node name="HurtboxAfterTimer" type="Timer" parent="AttackGroup"]
 unique_name_in_owner = true
 editor_description = "how long the hurtbox stays active after player stops attacking"
+one_shot = true
 
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackGroup"]
 unique_name_in_owner = true
