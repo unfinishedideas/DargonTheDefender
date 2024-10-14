@@ -73,8 +73,8 @@ public partial class Dargon : CharacterBody2D
 			{
 				currentSpeed = Speed;
 			}
-			velocity.X = _burnOut ? direction.X * BurnoutSpeed : direction.X * currentSpeed;
-			velocity.Y = _burnOut ? direction.Y * BurnoutSpeed : direction.Y * currentSpeed;
+			velocity.X = direction.X * currentSpeed;
+			velocity.Y = direction.Y * currentSpeed;
 		}
 		else
 		{
