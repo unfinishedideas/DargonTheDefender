@@ -246,21 +246,21 @@ scale_max = 0.5
 size = Vector2(125, 67)
 
 [node name="Dargon" type="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
 script = ExtResource("1_p3hlw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_qeb1q")
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_14xf8")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.919456
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(2, 0)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_bqchw")
 
 [node name="ColorAnimator" type="AnimationPlayer" parent="."]
@@ -278,16 +278,18 @@ offset_bottom = 40.0
 [node name="FireAmmoBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = -35.0
+offset_left = -70.0
+offset_top = -67.0
+offset_right = 30.0
+offset_bottom = -52.0
+scale = Vector2(1.5, 1.5)
 theme = ExtResource("4_eeo4k")
 max_value = 1.0
 value = 1.0
 show_percentage = false
 
 [node name="AttackGroup" type="Node2D" parent="."]
+scale = Vector2(1.5, 1)
 
 [node name="HurtboxAfterTimer" type="Timer" parent="AttackGroup"]
 unique_name_in_owner = true
@@ -296,6 +298,7 @@ one_shot = true
 
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackGroup"]
 unique_name_in_owner = true
+emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_trmbx")
 texture = ExtResource("3_ids7p")
@@ -310,3 +313,5 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackGroup/AttackArea"]
 position = Vector2(80, 3.5)
 shape = SubResource("RectangleShape2D_ocqc1")
+
+[node name="Node2D" type="Node2D" parent="."]

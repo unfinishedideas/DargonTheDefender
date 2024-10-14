@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpb5xkiosx2hi"]
+[gd_scene load_steps=4 format=3 uid="uid://dpb5xkiosx2hi"]
 
 [ext_resource type="Texture2D" uid="uid://dkle62ik0pcxk" path="res://assets/graphics/gold.png" id="1_nn1vk"]
+[ext_resource type="Script" path="res://scenes/GoldPile.cs" id="1_voh1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xye2g"]
 size = Vector2(122, 94.5)
 
 [node name="GoldPile" type="StaticBody2D"]
+script = ExtResource("1_voh1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nn1vk")

@@ -4,7 +4,7 @@ using System;
 public partial class Dargon : CharacterBody2D
 {
     [Export]
-    public float Speed = 300.0f;
+    public float Speed = 300.0f;            // movement speed while walking
     [Export]
     public float BurninatingSpeed = 200.0f; // movement speed while attacking
     [Export]

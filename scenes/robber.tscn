@@ -367,25 +367,25 @@ metadata/_edit_lock_ = true
 
 [node name="BackArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(70.9181, -71.4738)
-rotation = -1.3359
-scale = Vector2(0.999851, 0.999851)
+position = Vector2(68.3761, -70.5028)
+rotation = -1.24516
+scale = Vector2(1, 1)
 texture = ExtResource("7_rfjys")
 metadata/_edit_lock_ = true
 
 [node name="BackArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-33.2853, 14.4777)
-rotation = -0.136255
-scale = Vector2(0.99989, 0.99989)
+position = Vector2(-38.3176, 25.3466)
+rotation = -0.624887
+scale = Vector2(1, 1)
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
 [node name="BackArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-75.8584, -8.95343)
-rotation = -0.136255
-scale = Vector2(0.99989, 0.99989)
+position = Vector2(-86.9129, 24.6419)
+rotation = -0.624887
+scale = Vector2(1, 1)
 texture = ExtResource("9_mvt4c")
 metadata/_edit_lock_ = true
 
@@ -415,9 +415,8 @@ metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(34.8973, -152.249)
-rotation = -0.13416
-scale = Vector2(0.997637, 0.997637)
+position = Vector2(39, -153)
+scale = Vector2(0.999997, 0.999997)
 texture = ExtResource("1_8pqfg")
 metadata/_edit_lock_ = true
 
@@ -454,25 +453,25 @@ metadata/_edit_lock_ = true
 
 [node name="FrontArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(50.2094, -91.216)
-rotation = 0.237412
-scale = Vector2(0.999846, 0.999846)
+position = Vector2(52.9356, -90.9689)
+rotation = 0.0664338
+scale = Vector2(1, 1)
 texture = ExtResource("3_tndru")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-1.26195, 57.0292)
-rotation = -1.61994
-scale = Vector2(0.999877, 0.999877)
+position = Vector2(-11.6043, 52.6559)
+rotation = -0.854392
+scale = Vector2(1, 1)
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-3.75045, 108.207)
-rotation = -1.61994
-scale = Vector2(0.999877, 0.999877)
+position = Vector2(-48.8657, 87.8353)
+rotation = -0.854392
+scale = Vector2(1, 1)
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 
@@ -692,6 +691,7 @@ offset_bottom = 40.0
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = -10.0
 offset_top = -170.0
@@ -701,8 +701,9 @@ theme = SubResource("Theme_30bt7")
 value = 50.0
 show_percentage = false
 
-[node name="GoldStolenBar" type="ProgressBar" parent="UI"]
+[node name="TreasureStolenBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = -10.0
 offset_top = -150.0
