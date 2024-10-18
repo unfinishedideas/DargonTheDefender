@@ -367,57 +367,50 @@ metadata/_edit_lock_ = true
 
 [node name="BackArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(88.8175, -95.7066)
-rotation = -2.38808
-scale = Vector2(0.99996, 0.99996)
+position = Vector2(68.3761, -70.5028)
+rotation = -1.24516
 texture = ExtResource("7_rfjys")
 metadata/_edit_lock_ = true
 
 [node name="BackArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-38.719, 28.6079)
-rotation = -0.757703
-scale = Vector2(0.999972, 0.999972)
+position = Vector2(-38.3176, 25.3466)
+rotation = -0.624887
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
 [node name="BackArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackArmUpper"]
 texture_filter = 1
-position = Vector2(-86.9782, 34.3446)
-rotation = -0.757703
-scale = Vector2(0.999972, 0.999972)
+position = Vector2(-86.9129, 24.642)
+rotation = -0.624887
 texture = ExtResource("9_mvt4c")
 metadata/_edit_lock_ = true
 
 [node name="BackLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(78.1834, 3.58799)
-rotation = -1.77442
-scale = Vector2(0.999975, 0.999975)
+position = Vector2(54.4527, 22.4189)
+rotation = -0.29507
 texture = ExtResource("13_i6whr")
 metadata/_edit_lock_ = true
 
 [node name="BackLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
 texture_filter = 1
-position = Vector2(-20.2527, 77.6747)
+position = Vector2(-20.2531, 77.6759)
 rotation = 0.284062
-scale = Vector2(0.999975, 0.999975)
 texture = ExtResource("14_td1yf")
 metadata/_edit_lock_ = true
 
 [node name="BackLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/BackLegTop"]
 texture_filter = 1
-position = Vector2(-59.3065, 132.943)
+position = Vector2(-59.3079, 132.945)
 rotation = 0.284062
-scale = Vector2(0.999975, 0.999975)
 texture = ExtResource("15_c3ifu")
 metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(51.2151, -151.75)
-rotation = 0.396855
-scale = Vector2(0.999979, 0.999979)
+position = Vector2(39, -153)
+scale = Vector2(0.999997, 0.999997)
 texture = ExtResource("1_8pqfg")
 metadata/_edit_lock_ = true
 
@@ -429,49 +422,43 @@ metadata/_edit_lock_ = true
 
 [node name="FrontLegTop" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(29.5721, 18.6149)
-rotation = 0.784759
-scale = Vector2(0.999974, 0.999974)
+position = Vector2(45.7043, 24.9023)
+rotation = -0.275759
 texture = ExtResource("10_r56sq")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-17.1544, 76.33)
+position = Vector2(-17.1545, 76.3309)
 rotation = 0.258191
-scale = Vector2(0.999983, 0.999983)
 texture = ExtResource("11_qr7sc")
 metadata/_edit_lock_ = true
 
 [node name="FrontLegFoot" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontLegTop"]
 texture_filter = 1
-position = Vector2(-54.5104, 131.624)
+position = Vector2(-54.5112, 131.625)
 rotation = 0.258191
-scale = Vector2(0.999983, 0.999983)
 texture = ExtResource("12_34iph")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmUpper" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts"]
 texture_filter = 1
-position = Vector2(37.6486, -102.382)
-rotation = 1.34103
-scale = Vector2(0.999978, 0.999978)
+position = Vector2(53.4558, -90.9753)
+rotation = 0.0339847
 texture = ExtResource("3_tndru")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmMid" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-1.26198, 57.0306)
-rotation = -1.61994
-scale = Vector2(0.999972, 0.999972)
+position = Vector2(-5.4469, 56.3605)
+rotation = -1.33707
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
 [node name="FrontArmHand" type="Sprite2D" parent="SkeletonAndPartsContainer/Parts/FrontArmUpper"]
 texture_filter = 1
-position = Vector2(-3.75071, 108.213)
-rotation = -1.61994
-scale = Vector2(0.999972, 0.999972)
+position = Vector2(-22.1228, 104.816)
+rotation = -1.33707
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 

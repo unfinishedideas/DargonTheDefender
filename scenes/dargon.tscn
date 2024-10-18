@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bwg6cao6r80e3"]
+[gd_scene load_steps=36 format=3 uid="uid://bwg6cao6r80e3"]
 
 [ext_resource type="Script" path="res://scenes/Dargon.cs" id="1_p3hlw"]
 [ext_resource type="Shader" uid="uid://du5priqw440ov" path="res://scenes/shaders/HitFlash.tres" id="2_3sjkm"]
@@ -227,6 +227,17 @@ _data = {
 "burnout_old": SubResource("Animation_xedxs")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmpbk"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.603922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmpfm"]
+bg_color = Color(0.200013, 0.716363, 0.223328, 0.631373)
+
+[sub_resource type="Theme" id="Theme_dev12"]
+ProgressBar/constants/outline_size = 1
+ProgressBar/styles/background = SubResource("StyleBoxFlat_dmpbk")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bmpfm")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trmbx"]
 lifetime_randomness = 0.46
 particle_flag_disable_z = true
@@ -280,12 +291,25 @@ offset_bottom = 40.0
 [node name="FireAmmoBar" type="ProgressBar" parent="DargonUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -178.0
-offset_top = -179.0
-offset_right = -78.0
-offset_bottom = -164.0
+offset_left = -149.333
+offset_top = -144.0
+offset_right = -66.3334
+offset_bottom = -137.0
 scale = Vector2(3.75, 3.75)
 theme = ExtResource("4_eeo4k")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="DargonUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -149.333
+offset_top = -112.667
+offset_right = -66.3334
+offset_bottom = -105.667
+scale = Vector2(3.75, 3.75)
+theme = SubResource("Theme_dev12")
 max_value = 1.0
 value = 1.0
 show_percentage = false

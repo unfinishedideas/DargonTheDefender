@@ -1,0 +1,17 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://byi7nwqq0vm4n"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_d10xl"]
+parameter_name = "ColorParameter"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1240, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_d10xl")
+nodes/fragment/2/position = Vector2(640, 100)
