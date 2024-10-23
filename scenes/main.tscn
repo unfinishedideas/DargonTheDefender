@@ -68,5 +68,6 @@ position = Vector2(1461, 651)
 [node name="AmbientSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gnrh6")
 volume_db = -10.0
+bus = &"Music"
 
 [connection signal="UpdateTreasureCount" from="GoldPile" to="." method="_on_gold_pile_update_treasure_count"]
