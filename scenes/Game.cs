@@ -29,7 +29,7 @@ public partial class Game : Node2D
 			GetTree().Quit();
 		}
 		TimeSpan duration = TimeSpan.FromSeconds(LevelTimer.TimeLeft);
-		LevelTimerDisplay.Text = $"[right]{duration.Minutes}:{duration.Seconds}[/right]";
+		LevelTimerDisplay.Text = $"[right]{duration.Minutes.ToString("D2")}:{duration.Seconds.ToString("D2")}[/right]";
 	}
 
 	// signals ----------------------------------------------------------------
