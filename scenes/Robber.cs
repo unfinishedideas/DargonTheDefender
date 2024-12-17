@@ -1,10 +1,12 @@
 using Godot;
 using System;
 
+// TODO: Create a generic Enemy class that Robber inherits
 public partial class Robber : CharacterBody2D
 {
 	[Export]
-	public float Speed = 280.0f;
+	public float Speed = 1.0f;
+	//public float Speed = 280.0f;
 	[Export]
 	public float TakeDamageSpeed = 150.0f;
 	[Export]
@@ -20,6 +22,7 @@ public partial class Robber : CharacterBody2D
 	// Nodes
 	private ProgressBar _healthBar;
 	private ProgressBar _treasureStolenBar;
+	private GoldPile _goldPile;
 
 	public override void _Ready()
 	{
@@ -53,6 +56,12 @@ public partial class Robber : CharacterBody2D
 		UpdateUI();
 	}
 
+	public void Initialize(Vector2 spawnLocation, GoldPile pile)
+	{
+		this.GlobalPosition = spawnLocation;
+		_goldPile = pile;
+	}
+
 	// Determine what course of action to take next ---------------------------
 	private void CheckState()
 	{
@@ -61,7 +70,7 @@ public partial class Robber : CharacterBody2D
 	// Get direction toward gold pile and run towards it ----------------------
 	private void RunToGold(double delta)
 	{
-		Vector2 direction = Vector2.Zero;
+		Vector2 direction = _goldPile.GlobalPosition - this.GlobalPosition;
 		RunSomewhere(delta, direction);
 	}
 
@@ -96,7 +105,7 @@ public partial class Robber : CharacterBody2D
 	private void Death()
 	{
 		// play death animation
-		// give the treasure back to the hoard
+		// drop treasure on the ground? Or just give back to hoard for now...
 	}
 
 	// Update UI for the guy --------------------------------------------------

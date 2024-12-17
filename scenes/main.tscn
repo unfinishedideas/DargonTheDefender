@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://tsxglfoxa68w"]
+[gd_scene load_steps=9 format=3 uid="uid://tsxglfoxa68w"]
 
 [ext_resource type="Script" path="res://scenes/Game.cs" id="1_otfyy"]
 [ext_resource type="PackedScene" uid="uid://bwg6cao6r80e3" path="res://scenes/dargon.tscn" id="2_27ifm"]
 [ext_resource type="PackedScene" uid="uid://dpb5xkiosx2hi" path="res://scenes/gold_pile.tscn" id="3_2rgmi"]
 [ext_resource type="PackedScene" uid="uid://cx0mmxcdoawdw" path="res://scenes/robber.tscn" id="4_g4x5o"]
+[ext_resource type="PackedScene" uid="uid://cofgeppxt3rm8" path="res://scenes/enemy_spawner.tscn" id="5_egt8v"]
 [ext_resource type="AudioStream" uid="uid://3hwrawthu78a" path="res://assets/music/SafeRoomLoop.wav" id="5_gnrh6"]
 
 [sub_resource type="Theme" id="Theme_la2q5"]
@@ -22,6 +23,12 @@ script = ExtResource("1_otfyy")
 [node name="LevelTimer" type="Timer" parent="GameLogic"]
 unique_name_in_owner = true
 wait_time = 300.0
+one_shot = true
+autostart = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="GameLogic"]
+unique_name_in_owner = true
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -56,18 +63,37 @@ position = Vector2(881, 619)
 
 [node name="Camera2D" type="Camera2D" parent="Dargon"]
 scale = Vector2(1.5, 1.5)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="GoldPile" parent="." instance=ExtResource("3_2rgmi")]
+unique_name_in_owner = true
 position = Vector2(1169, 619)
-
-[node name="Robber" parent="." instance=ExtResource("4_g4x5o")]
-position = Vector2(1461, 651)
 
 [node name="AmbientSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gnrh6")
 volume_db = -10.0
 bus = &"Music"
 
+[node name="EnemySpawners" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemySpawner01" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
+position = Vector2(2147, 703)
+RobberScene = ExtResource("4_g4x5o")
+
+[node name="EnemySpawner02" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
+position = Vector2(1084, -240)
+RobberScene = ExtResource("4_g4x5o")
+
+[node name="EnemySpawner03" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
+position = Vector2(-61, 706)
+RobberScene = ExtResource("4_g4x5o")
+
+[node name="EnemySpawner04" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
+position = Vector2(1110, 1549)
+RobberScene = ExtResource("4_g4x5o")
+
+[connection signal="timeout" from="GameLogic/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="UpdateTreasureCount" from="GoldPile" to="." method="_on_gold_pile_update_treasure_count"]
