@@ -376,7 +376,6 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-38.3176, 25.3466)
 rotation = -0.624887
-scale = Vector2(1, 1)
 texture = ExtResource("8_7uung")
 metadata/_edit_lock_ = true
 
@@ -384,7 +383,6 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-86.9129, 24.642)
 rotation = -0.624887
-scale = Vector2(1, 1)
 texture = ExtResource("9_mvt4c")
 metadata/_edit_lock_ = true
 
@@ -454,7 +452,6 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-5.4469, 56.3605)
 rotation = -1.33707
-scale = Vector2(1, 1)
 texture = ExtResource("4_7i6l1")
 metadata/_edit_lock_ = true
 
@@ -462,7 +459,6 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(-22.1228, 104.816)
 rotation = -1.33707
-scale = Vector2(1, 1)
 texture = ExtResource("6_wlxec")
 metadata/_edit_lock_ = true
 

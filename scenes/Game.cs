@@ -31,6 +31,8 @@ public partial class Game : Node2D
 		Godot.Collections.Array<Node> points = _spawnerParent.GetChildren();
 		_numSpawners = points.Count;
 		EnemySpawners = new EnemySpawner[_numSpawners];
+
+		// populate the active spawner list
 		int i = 0;
 		foreach(Node point in points)
 		{
@@ -69,6 +71,7 @@ public partial class Game : Node2D
 	// make enemy spawning more intelligent
 	public void SpawnEnemy()
 	{
+		//EnemySpawners[0].SpawnRobber(GoldHoard);  // used for debugging just the first spawner
 		var rand = new Random();
 		EnemySpawners[rand.Next(0,_numSpawners)].SpawnRobber(GoldHoard);
 	}

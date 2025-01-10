@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cofgeppxt3rm8"]
+[gd_scene load_steps=4 format=3 uid="uid://cofgeppxt3rm8"]
 
 [ext_resource type="Script" path="res://scenes/EnemySpawner.cs" id="1_38jr1"]
 [ext_resource type="Texture2D" uid="uid://hc2q02nbehuu" path="res://assets/graphics/debugEnemySpawner.png" id="1_ehycd"]
+[ext_resource type="PackedScene" uid="uid://cx0mmxcdoawdw" path="res://scenes/robber.tscn" id="2_f6efd"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_38jr1")
+RobberScene = ExtResource("2_f6efd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ehycd")
+
+[node name="EnemyList" type="Node2D" parent="."]
+unique_name_in_owner = true

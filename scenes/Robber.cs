@@ -23,11 +23,10 @@ public partial class Robber : CharacterBody2D
 	private ProgressBar _healthBar;
 	private ProgressBar _treasureStolenBar;
 	private GoldPile _goldPile;
+	private EnemySpawner _homeSpawner;
 
 	public override void _Ready()
 	{
-		_currentHealth = MaxHealth;
-		_currentState = EnemyState.RunToGold;
 		_healthBar = GetNode<ProgressBar>("%HealthBar");
 		_treasureStolenBar = GetNode<ProgressBar>("%TreasureStolenBar");
 	}
@@ -56,10 +55,13 @@ public partial class Robber : CharacterBody2D
 		UpdateUI();
 	}
 
-	public void Initialize(Vector2 spawnLocation, GoldPile pile)
+	public void Initialize(EnemySpawner parentSpawner, GoldPile pile)
 	{
-		this.GlobalPosition = spawnLocation;
+		_homeSpawner = parentSpawner;
+		this.GlobalPosition = _homeSpawner.GlobalPosition;
 		_goldPile = pile;
+		_currentState = EnemyState.RunToGold;
+		_currentHealth = MaxHealth;
 	}
 
 	// Determine what course of action to take next ---------------------------
@@ -86,6 +88,7 @@ public partial class Robber : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
+			velocity.Y = direction.Y * Speed;
 		}
 		Velocity = velocity;
 		MoveAndSlide();
@@ -106,6 +109,8 @@ public partial class Robber : CharacterBody2D
 	{
 		// play death animation
 		// drop treasure on the ground? Or just give back to hoard for now...
+		// remove from home spawner list
+		_homeSpawner.RemoveRobber(this);
 	}
 
 	// Update UI for the guy --------------------------------------------------
