@@ -151,8 +151,37 @@ animations = [{
 "texture": SubResource("AtlasTexture_xq5jn")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"run",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxxkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h57b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to7o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wof26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv6ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqj5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qedj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq5jn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqchw"]
@@ -266,9 +295,9 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_qeb1q")
 scale = Vector2(3.75, 3.75)
 sprite_frames = SubResource("SpriteFrames_14xf8")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.807142
+frame_progress = 0.164643
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

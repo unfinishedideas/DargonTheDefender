@@ -83,15 +83,12 @@ position = Vector2(2734, 648)
 
 [node name="EnemySpawner02" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
 position = Vector2(979, -414)
-SpawnerActive = false
 
 [node name="EnemySpawner03" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
 position = Vector2(-942, 700)
-SpawnerActive = false
 
 [node name="EnemySpawner04" parent="EnemySpawners" instance=ExtResource("5_egt8v")]
 position = Vector2(977, 1625)
-SpawnerActive = false
 
 [connection signal="timeout" from="GameLogic/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="UpdateTreasureCount" from="GoldPile" to="." method="_on_gold_pile_update_treasure_count"]

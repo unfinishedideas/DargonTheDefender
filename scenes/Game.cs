@@ -28,6 +28,7 @@ public partial class Game : Node2D
 		EnemySpawnTimer = GetNode<Timer>("%EnemySpawnTimer");
 
 		// Add the enemy spawners
+		// TODO: Take into consideration the ACTIVE spawners... ;\
 		Godot.Collections.Array<Node> points = _spawnerParent.GetChildren();
 		_numSpawners = points.Count;
 		EnemySpawners = new EnemySpawner[_numSpawners];

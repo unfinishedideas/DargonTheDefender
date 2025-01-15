@@ -89,7 +89,14 @@ public partial class Dargon : CharacterBody2D
 			// Handle Regular Speed
 			if (!_isAttacking)
 			{
-				AnimPlayer.Play("walk");
+				if (_currentSprintMultiplier == MaxSprintMultiplier)
+				{
+					AnimPlayer.Play("run");
+				}
+				else
+				{
+					AnimPlayer.Play("walk");
+				}
 			}
 			float currentSpeed = 0f;
 			if (_burnOut)
